@@ -626,10 +626,12 @@ endfunction
 " Autocommands {{{1
 "
 augroup BufKill
-autocmd BufKill WinEnter * call <SID>UpdateList('WinEnter')
-autocmd BufKill BufEnter * call <SID>UpdateList('BufEnter')
-autocmd BufKill WinLeave * call <SID>UpdateLastColumn('WinLeave')
-autocmd BufKill BufLeave * call <SID>UpdateLastColumn('BufLeave')
+    autocmd!
+    autocmd WinEnter * call <SID>UpdateList('WinEnter')
+    autocmd BufEnter * call <SID>UpdateList('BufEnter')
+    autocmd WinLeave * call <SID>UpdateLastColumn('WinLeave')
+    autocmd BufLeave * call <SID>UpdateLastColumn('BufLeave')
+augroup END
 
 " Cleanup and modelines {{{1
 let &cpo = s:save_cpo
